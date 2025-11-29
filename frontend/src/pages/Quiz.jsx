@@ -10,14 +10,45 @@
   A -> Auditory
   R -> Reading/Writing
   K -> Kinesthetic
-  
+
 */
 
+import quizQuestions from "../data/quizQuestions";
+import useQuizLogic from "../hooks/useQuizLogic";
+
 export default function Quiz() {
+  const { answers, handleSelect, handleSubmit } = useQuizLogic(quizQuestions.length);
+
   return (
-    <div>
-      <h1>Quiz Page</h1>
-      <a href="/">Back to Main</a>
+    <div style={{ padding: "20px" }}>
+      <h1>Learning Style Quiz</h1>
+
+      {quizQuestions.map((q, questionIndex) => (
+        <div key={questionIndex} style={{ marginBottom: "20px" }}>
+          <h3>{q.question}</h3>
+
+          {q.options.map((opt, optionIndex) => (
+            <label key={optionIndex} style={{ display: "block", marginBottom: "5px" }}>
+              <input
+                type="radio"
+                name={`q${questionIndex}`}  // each question is grouped
+                value={opt.value}
+                checked={answers[questionIndex] === opt.value}
+                onChange={() => handleSelect(questionIndex, opt.value)}
+              />
+              {" "}{opt.label}
+            </label>
+          ))}
+        </div>
+      ))}
+
+      <button onClick={handleSubmit} style={{ marginTop: "20px" }}>
+        Submit Quiz
+      </button>
+
+      <div style={{ marginTop: "15px" }}>
+        <a href="/">Back to Main</a>
+      </div>
     </div>
   );
 }
