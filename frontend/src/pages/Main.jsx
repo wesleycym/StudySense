@@ -48,6 +48,14 @@ export default function Main() {
     <div style={{ padding: "20px" }}>
       <h1>StudySense</h1>
 
+      <button onClick={async () => {
+        const res = await fetch("http://localhost:3001/test");
+        const text = await res.text();
+        alert("Server responded: " + text);
+      }}>
+        Test Server Connection
+      </button>
+
       <p>
         Enter your notes below and click “Generate Study Guide” to
         receive tailored content based on your learning style.
