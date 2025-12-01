@@ -1,0 +1,102 @@
+// Homepage UI
+
+import { useState } from "react";
+import Cookies from "js-cookie";
+
+export default function Main() {
+  const [notes, setNotes] = useState("");
+  const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function generateStudyGuide() {
+    if (!notes.trim()) {
+      alert("Please enter your notes."); // Switch to toast notification later
+      return;
+    }
+
+    const learningStyle = Cookies.get("learningStyle");
+
+    if (!learningStyle) {
+      alert("Please take the quiz first so we know your learning style.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch("http://localhost:3001/study/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text: notes,
+          learningStyle: learningStyle,
+        }),
+      });
+
+      const data = await response.json();
+
+      setResult(data.output);
+    } catch (error) {
+      console.error("Error generating study guide:", error);
+      alert("Something went wrong.");
+    }
+
+    setLoading(false);
+  }
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <h1>StudySense</h1>
+
+      <button onClick={async () => {
+        const res = await fetch("http://localhost:3001/test");
+        const text = await res.text();
+        alert("Server responded: " + text);
+      }}>
+        Test Server Connection
+      </button>
+
+      <p>
+        Enter your notes below and click “Generate Study Guide” to
+        receive tailored content based on your learning style.
+      </p>
+
+      <div style={{ marginTop: "20px", paddingBottom: "10px" }}>
+        <a href="/quiz">Take or Retake Quiz</a>
+      </div>
+
+      <textarea
+        placeholder="Paste your notes here..."
+        value={notes}
+        onChange={(e) => setNotes(e.target.value)}
+        style={{
+          width: "100%",
+          height: "200px",
+          padding: "10px",
+          marginBottom: "10px",
+        }}
+      />
+
+      <br />
+
+      <button onClick={generateStudyGuide} disabled={loading}>
+        {loading ? "Generating..." : "Generate Study Guide"}
+      </button>
+
+      {result && (
+        <div
+          style={{
+            marginTop: "30px",
+            padding: "15px",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          <h2>Your Study Guide:</h2>
+          <p>{result}</p>
+        </div>
+      )}
+    </div>
+  );
+}
