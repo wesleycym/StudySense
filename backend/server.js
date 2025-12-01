@@ -1,6 +1,18 @@
 import express from "express";
 import cors from "cors";
 
+// --- OpenAI Setup ---
+import dotenv from "dotenv";
+dotenv.config();
+
+import OpenAI from "openai";
+import { stylePrompts } from "./prompts.js";
+
+const client = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+
 const app = express();
 const PORT = 3001;
 
