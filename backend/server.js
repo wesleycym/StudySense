@@ -16,11 +16,11 @@ app.get("/test", (req, res) => {
 app.post("/study/generate", (req, res) => {
   const { text, learningStyle } = req.body;
 
-  // Debug logs
-  console.log("Received request:"); console.log("Text:", text); console.log("Learning Style:", learningStyle);
+// Debug logs
+console.log("Received request:"); console.log("Text:", text); console.log("Learning Style:", learningStyle);
 
   // Placeholder
-  res.json({
+res.json({
     output: `Placeholder study guide for ${learningStyle} based on: ${text}`,
   });
 });
