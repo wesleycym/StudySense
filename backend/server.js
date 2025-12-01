@@ -24,7 +24,7 @@ app.get("/test", (req, res) => {
   res.send("Backend is running!");
 });
 
-// STUDY route — OpenAI version
+// STUDY route -> generated study guides
 app.post("/study/generate", async (req, res) => {
   try {
     const { text, learningStyle } = req.body;
