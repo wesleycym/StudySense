@@ -18,7 +18,11 @@ function sanitizeInput(raw) {
 
   return raw
     .replace(/<\/?[^>]+(>|$)/g, "") // Remove html tags
-    .replace(/\s+/g, " ")           // Normalize whitespace
+    .replace(/\s+/g, " ") // Clean up garbage whitespace
+    .replace(/[\x00-\x1F\x7F]/g, "") // Removing control characters
+    .replace(/^#+\s*/gm, "") // Remove markdown headers
+    .replace(/[-]{3,}/g, "") // Remove seperator lines
+    .replace(/(.)\1{5,}/g, "$1$1") // Compress repeated characters: ie) Hellooooooo -> Hello
     .trim();
 }
 
