@@ -12,6 +12,19 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+// Input sanitization function
+function sanitizeInput(raw) {
+  if (!raw) return "";
+
+  return raw
+    .replace(/<\/?[^>]+(>|$)/g, "") // Remove html tags
+    .replace(/\s+/g, " ") // Clean up garbage whitespace
+    .replace(/[\x00-\x1F\x7F]/g, "") // Removing control characters
+    .replace(/^#+\s*/gm, "") // Remove markdown headers
+    .replace(/[-]{3,}/g, "") // Remove seperator lines
+    .replace(/(.)\1{5,}/g, "$1$1") // Compress repeated characters: ie) Hellooooooo -> Hello
+    .trim();
+}
 
 const app = express();
 const PORT = 3001;
@@ -33,6 +46,10 @@ app.post("/study/generate", async (req, res) => {
       return res.status(400).json({ error: "Missing text or learningStyle" });
     }
 
+    const cleanText = sanitizeInput(text); // Clean the input
+    if (cleanText.length < 5) { return res.status(400).json({ error: "Input is too short." });} // Check for min length
+    if (cleanText.length > 15000) {return res.status(400).json({ error: "Input too long. Please shorten your notes." });} // Check for max length
+
     const chosenPrompt = stylePrompts[learningStyle];
 
     const fullPrompt = `
@@ -40,7 +57,7 @@ ${chosenPrompt}
 
 Rewrite the following notes specifically for this learning style:
 
-${text}
+${cleanText}
     `;
 
     const completion = await client.chat.completions.create({
