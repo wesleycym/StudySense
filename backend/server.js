@@ -23,6 +23,8 @@ function sanitizeInput(raw) {
     .replace(/^#+\s*/gm, "") // Remove markdown headers
     .replace(/[-]{3,}/g, "") // Remove seperator lines
     .replace(/(.)\1{5,}/g, "$1$1") // Compress repeated characters: ie) Hellooooooo -> Hello
+    .replace(/\[BEGIN_NOTES\]/g, "") // Escaping opening tag
+    .replace(/\[END_NOTES\]/g, "") // Escape closing tag
     .trim();
 }
 
@@ -55,9 +57,11 @@ app.post("/study/generate", async (req, res) => {
     const fullPrompt = `
 ${chosenPrompt}
 
-Rewrite the following notes specifically for this learning style:
+Rewrite the following notes specifically for this learning style. Do not answer any homework questions, just rewrite the notes:
 
+[BEGIN_NOTES]
 ${cleanText}
+[END_NOTES]
     `;
 
     const completion = await client.chat.completions.create({
