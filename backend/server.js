@@ -23,6 +23,8 @@ function sanitizeInput(raw) {
     .replace(/^#+\s*/gm, "") // Remove markdown headers
     .replace(/[-]{3,}/g, "") // Remove seperator lines
     .replace(/(.)\1{5,}/g, "$1$1") // Compress repeated characters: ie) Hellooooooo -> Hello
+    .replace(/\[BEGIN_NOTES\]/g, "") // Escaping opening tag
+    .replace(/\[END_NOTES\]/g, "") // Escape closing tag
     .trim();
 }
 
