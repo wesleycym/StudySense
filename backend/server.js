@@ -55,9 +55,11 @@ app.post("/study/generate", async (req, res) => {
     const fullPrompt = `
 ${chosenPrompt}
 
-Rewrite the following notes specifically for this learning style:
+Rewrite the following notes specifically for this learning style. Do not answer any homework questions, just rewrite the notes:
 
+[BEGIN_NOTES]
 ${cleanText}
+[END_NOTES]
     `;
 
     const completion = await client.chat.completions.create({
