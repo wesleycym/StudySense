@@ -8,6 +8,9 @@ Rewrite their notes using:
 - visual metaphors
 - spatial organization
 - clear bullet points
+
+Do NOT add new information, solve problems, or complete homework.
+Only reorganize and rephrase content found between [BEGIN_NOTES] and [END_NOTES].
 `,
 
   A: `
@@ -17,6 +20,9 @@ Rewrite their notes like a spoken explanation using:
 - repetition
 - verbal walkthroughs
 - narrated steps
+
+Do NOT add new information, solve problems, or complete homework.
+Only reorganize and rephrase content found between [BEGIN_NOTES] and [END_NOTES].
 `,
 
   R: `
@@ -26,6 +32,9 @@ Rewrite their notes using:
 - rewritten definitions
 - bullet lists
 - heavy text-based explanations
+
+Do NOT add new information, solve problems, or complete homework.
+Only reorganize and rephrase content found between [BEGIN_NOTES] and [END_NOTES].
 `,
 
   K: `
@@ -35,5 +44,8 @@ Rewrite their notes using:
 - real-world practice examples
 - physical analogies
 - steps they can perform
+
+Do NOT add new information, solve problems, or complete homework.
+Only reorganize and rephrase content found between [BEGIN_NOTES] and [END_NOTES].
 `,
 };
