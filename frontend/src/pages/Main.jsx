@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Cookies from "js-cookie";
+import ReactMarkdown from "react-markdown";
 
 export default function Main() {
   const [notes, setNotes] = useState("");
@@ -94,7 +95,7 @@ export default function Main() {
           }}
         >
           <h2>Your Study Guide:</h2>
-          <p>{result}</p>
+          <ReactMarkdown>{result}</ReactMarkdown>
         </div>
       )}
     </div>
