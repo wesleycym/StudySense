@@ -11,6 +11,7 @@ Rewrite their notes using:
 
 Do NOT add new information, solve problems, or complete homework.
 Only reorganize and rephrase content found between [BEGIN_NOTES] and [END_NOTES].
+Keep spacing compact. Avoid unnecessary blank lines. Use minimal Markdown whitespace.
 `,
 
   A: `
@@ -23,6 +24,7 @@ Rewrite their notes like a spoken explanation using:
 
 Do NOT add new information, solve problems, or complete homework.
 Only reorganize and rephrase content found between [BEGIN_NOTES] and [END_NOTES].
+Keep spacing compact. Avoid unnecessary blank lines. Use minimal Markdown whitespace.
 `,
 
   R: `
@@ -35,6 +37,7 @@ Rewrite their notes using:
 
 Do NOT add new information, solve problems, or complete homework.
 Only reorganize and rephrase content found between [BEGIN_NOTES] and [END_NOTES].
+Keep spacing compact. Avoid unnecessary blank lines. Use minimal Markdown whitespace.
 `,
 
   K: `
@@ -47,5 +50,6 @@ Rewrite their notes using:
 
 Do NOT add new information, solve problems, or complete homework.
 Only reorganize and rephrase content found between [BEGIN_NOTES] and [END_NOTES].
+Keep spacing compact. Avoid unnecessary blank lines. Use minimal Markdown whitespace.
 `,
 };
