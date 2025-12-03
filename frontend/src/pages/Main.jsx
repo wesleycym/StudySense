@@ -4,6 +4,9 @@ import Cookies from "js-cookie";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+import "./css/StudyGuide.css";
+
+
 export default function Main() {
   const [notes, setNotes] = useState("");
   const [result, setResult] = useState("");
