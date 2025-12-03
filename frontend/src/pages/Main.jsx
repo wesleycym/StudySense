@@ -1,8 +1,8 @@
 // Homepage UI
-
 import { useState } from "react";
 import Cookies from "js-cookie";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export default function Main() {
   const [notes, setNotes] = useState("");
@@ -95,7 +95,13 @@ export default function Main() {
           }}
         >
           <h2>Your Study Guide:</h2>
-          <ReactMarkdown>{result}</ReactMarkdown>
+
+          <div className="study-guide">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {result}
+            </ReactMarkdown>
+          </div>
+
         </div>
       )}
     </div>
