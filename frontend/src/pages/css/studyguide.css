@@ -1,0 +1,22 @@
+.study-guide > * {
+  margin-top: 0.005rem;
+  margin-bottom: 0.005rem;
+}
+
+.study-guide ul,
+.study-guide ol {
+  padding-left: 2rem;
+}
+
+.study-guide > ul > li,
+.study-guide > ol > li {
+  line-height: 1rem;
+}
+
+.study-guide h2,
+.study-guide h3,
+.study-guide h4,
+.study-guide h5,
+.study-guide h6 {
+  line-height: 1.5rem;
+}
