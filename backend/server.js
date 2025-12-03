@@ -69,7 +69,15 @@ ${cleanText}
       messages: [{ role: "user", content: fullPrompt }],
     });
 
-    res.json({ output: completion.choices[0].message.content });
+    const rawOutput = completion.choices[0].message.content; // Raw output from the api
+
+    // Cleaning up markdown file -> tendancy of having too many newlines
+    const cleanedOutput = rawOutput
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+
+    res.json({ output: cleanedOutput }); // Send back clean output
+
 
   } catch (error) {
     console.error("OpenAI error:", error);
