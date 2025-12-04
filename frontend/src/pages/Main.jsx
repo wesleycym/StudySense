@@ -51,11 +51,11 @@ export default function Main() {
   return (
     <div style={{ padding: "20px" }}>
       <h1
-      className="text-center font-bold text-4xl mb-4">StudySense</h1>
+      className = "text-center font-bold text-4xl mb-4">StudySense</h1>
 
       <div className = 'flex justify-center mb-4'>
       <button
-      className="py-2 px-4 hover:bg-gray-400 text-white rounded-4xl"
+      className = "py-2 px-4 hover:bg-gray-400 text-white rounded-4xl"
       onClick={async () => {
         const res = await fetch("http://localhost:3001/test");
         const text = await res.text();
@@ -65,8 +65,13 @@ export default function Main() {
       </button>
       </div>
 
-      <div style={{ marginTop: "20px", paddingBottom: "10px" }}>
-        <a href="/quiz">Take or Retake Quiz</a>
+      <div className = "flex justify-center mb-4">
+        <a 
+        href="/quiz"
+        className = "py-2 px-4 hover:bg-gray-400 text-white rounded-4xl"
+        >
+          Take or Retake Quiz
+        </a>
       </div>
 
       <p>
