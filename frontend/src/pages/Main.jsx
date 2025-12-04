@@ -50,7 +50,7 @@ export default function Main() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>StudySense</h1>
+      <h1 class="text-3xl font-bold underline">StudySense</h1>
 
       <button onClick={async () => {
         const res = await fetch("http://localhost:3001/test");
