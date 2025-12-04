@@ -92,7 +92,7 @@ export default function Main() {
       />
       <br />
 
-      <div className = "flex justify-center">
+      <div className = "flex justify-left">
         <button className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl" onClick={generateStudyGuide} disabled={loading}>
           {loading ? "Generating..." : "Generate Study Guide"}
         </button>
