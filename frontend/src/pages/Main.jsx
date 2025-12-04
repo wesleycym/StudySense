@@ -65,14 +65,14 @@ export default function Main() {
       </button>
       </div>
 
+      <div style={{ marginTop: "20px", paddingBottom: "10px" }}>
+        <a href="/quiz">Take or Retake Quiz</a>
+      </div>
+
       <p>
         Enter your notes below and click “Generate Study Guide” to
         receive tailored content based on your learning style.
       </p>
-
-      <div style={{ marginTop: "20px", paddingBottom: "10px" }}>
-        <a href="/quiz">Take or Retake Quiz</a>
-      </div>
 
       <textarea
         placeholder="Paste your notes here..."
