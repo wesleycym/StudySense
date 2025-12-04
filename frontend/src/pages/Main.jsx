@@ -53,13 +53,17 @@ export default function Main() {
       <h1
       className="text-center font-bold text-4xl mb-4">StudySense</h1>
 
-      <button onClick={async () => {
+      <div className = 'flex justify-center mb-4'>
+      <button
+      className="py-2 px-4 hover:bg-gray-400 text-white rounded-4xl"
+      onClick={async () => {
         const res = await fetch("http://localhost:3001/test");
         const text = await res.text();
         alert("Server responded: " + text);
       }}>
         Test Server Connection
       </button>
+      </div>
 
       <p>
         Enter your notes below and click “Generate Study Guide” to
