@@ -56,7 +56,7 @@ export default function Main() {
       {/* Test Server Connection Button */}
       <div className = 'flex justify-center mb-4'>
         <button
-        className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl"
+        className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer"
         onClick={async () => {
           const res = await fetch("http://localhost:3001/test");
           const text = await res.text();
@@ -104,7 +104,7 @@ export default function Main() {
       {/* Clear Notes Button */}
       <div className = "flex justify-center">
         <button
-          className="py-2 px-4 hover:bg-gray-500 text-white rounded-4xl"
+          className="py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer"
           onClick={() => setNotes("")}
         >
           Clear Notes
@@ -113,7 +113,7 @@ export default function Main() {
 
       {/* Generate Study Guide Button */}
       <div className = "flex justify-left">
-        <button className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl" onClick={generateStudyGuide} disabled={loading}>
+        <button className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer" onClick={generateStudyGuide} disabled={loading}>
           {loading ? "Generating..." : "Generate Study Guide"}
         </button>
       </div>
