@@ -101,6 +101,16 @@ export default function Main() {
         }}
       />
 
+      {/* Clear Notes Button */}
+      <div className = "flex justify-center">
+        <button
+          className="py-2 px-4 hover:bg-gray-500 text-white rounded-4xl"
+          onClick={() => setNotes("")}
+        >
+          Clear Notes
+        </button>
+      </div>
+
       {/* Generate Study Guide Button */}
       <div className = "flex justify-left">
         <button className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl" onClick={generateStudyGuide} disabled={loading}>
