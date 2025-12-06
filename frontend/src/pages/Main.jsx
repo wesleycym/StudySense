@@ -101,20 +101,34 @@ export default function Main() {
         }}
       />
 
-      {/* Clear Notes Button */}
+      {/* Clear Notes Button & study guide button */}
       <div className = "flex justify-center">
         <button
           className="py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer"
-          onClick={() => setNotes("")}
+          onClick={() => {
+            setNotes("");
+            setResult("");
+          }}
         >
           Clear Notes
         </button>
       </div>
 
       {/* Generate Study Guide Button */}
-      <div className = "flex justify-left">
-        <button className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer" onClick={generateStudyGuide} disabled={loading}>
-          {loading ? "Generating..." : "Generate Study Guide"}
+      <div className="flex justify-left">
+        <button
+          className="py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer flex items-center gap-2 disabled:opacity-70"
+          onClick={generateStudyGuide}
+          disabled={loading}
+        >
+          {loading ? (
+            <>
+              <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+              Generating...
+            </>
+          ) : (
+            "Generate Study Guide"
+          )}
         </button>
       </div>
 
