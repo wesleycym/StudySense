@@ -106,8 +106,10 @@ export default function Main() {
         <button
           className="py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer"
           onClick={() => {
+            if (window.confirm("Are you sure you want to clear your notes?")) {
             setNotes("");
             setResult("");
+            }
           }}
         >
           Clear Notes
