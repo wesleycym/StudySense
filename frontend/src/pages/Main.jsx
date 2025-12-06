@@ -74,10 +74,12 @@ export default function Main() {
         </a>
       </div>
 
-      <p>
-        Enter your notes below and click “Generate Study Guide” to
-        receive tailored content based on your learning style.
-      </p>
+      <div className = "flex justify-left pl-2 mb-4">
+        <p>
+          Enter your notes below and click “Generate Study Guide” to
+          receive tailored content based on your learning style.
+        </p>
+      </div>
 
       <textarea
         placeholder="Paste your notes here..."
@@ -88,9 +90,12 @@ export default function Main() {
           height: "200px",
           padding: "10px",
           marginBottom: "10px",
+          resize:"none",
+          borderRadius: "8px",
+          border: "1px solid #ccc",
+          fontSize: "16px",
         }}
       />
-      <br />
 
       <div className = "flex justify-left">
         <button className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl" onClick={generateStudyGuide} disabled={loading}>
