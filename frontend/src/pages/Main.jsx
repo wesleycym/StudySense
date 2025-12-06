@@ -21,7 +21,7 @@ export default function Main() {
     const learningStyle = Cookies.get("learningStyle");
 
     if (!learningStyle) {
-      alert("Please take the quiz first so we know your learning style.");
+      alert("Please take the quiz first so we know your learning style."); // Switch to toast notification if you have time
       return;
     }
 
@@ -42,7 +42,7 @@ export default function Main() {
       setResult(data.output);
     } catch (error) {
       console.error("Error generating study guide:", error);
-      alert("Something went wrong.");
+      alert("Something went wrong."); // toast this
     }
 
     setLoading(false);
@@ -50,21 +50,23 @@ export default function Main() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1
-      className = "text-center font-bold text-4xl mb-4">StudySense</h1>
 
+      <h1 className = "text-center font-bold text-4xl mb-5">StudySense</h1>
+
+      {/* Test Server Connection Button */}
       <div className = 'flex justify-center mb-4'>
-      <button
-      className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl"
-      onClick={async () => {
-        const res = await fetch("http://localhost:3001/test");
-        const text = await res.text();
-        alert("Server responded: " + text);
-      }}>
-        Test Server Connection
-      </button>
+        <button
+        className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl"
+        onClick={async () => {
+          const res = await fetch("http://localhost:3001/test");
+          const text = await res.text();
+          alert("Server responded: " + text);
+        }}>
+          Test Server Connection
+        </button>
       </div>
 
+      {/* Take or Retake Quiz Button */}
       <div className = "flex justify-center mb-4">
         <a 
         href="/quiz"
@@ -74,6 +76,7 @@ export default function Main() {
         </a>
       </div>
 
+      {/* Instructions */}
       <div className = "flex justify-left pl-2 mb-4">
         <p>
           Enter your notes below and click “Generate Study Guide” to
@@ -81,6 +84,7 @@ export default function Main() {
         </p>
       </div>
 
+      {/* Notes Input Area */}
       <textarea
         placeholder="Paste your notes here..."
         value={notes}
@@ -97,12 +101,14 @@ export default function Main() {
         }}
       />
 
+      {/* Generate Study Guide Button */}
       <div className = "flex justify-left">
         <button className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl" onClick={generateStudyGuide} disabled={loading}>
           {loading ? "Generating..." : "Generate Study Guide"}
         </button>
       </div>
 
+      {/* Display Result */}
       {result && (
         <div
           style={{
