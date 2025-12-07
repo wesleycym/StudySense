@@ -42,9 +42,11 @@ export default function Quiz() {
         </div>
       ))}
 
-      <button onClick={handleSubmit} className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer">
-        Submit Quiz
-      </button>
+      <div className = "flex justify-left ml-4 mt-4 mb-4">
+        <button onClick={handleSubmit} className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer">
+          Submit Quiz
+        </button>
+      </div>
 
       <div className = "flex justify-left ml-4 mt-4 mb-4">
         <a href="/" className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl">Back to Main</a>
