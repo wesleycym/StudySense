@@ -21,7 +21,7 @@ export default function Quiz() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Learning Style Quiz</h1>
+      <h1 className = "text-center font-bold text-4xl mb-5">Learning Style Quiz</h1>
 
       {quizQuestions.map((q, questionIndex) => (
         <div key={questionIndex} style={{ marginBottom: "20px" }}>
@@ -42,12 +42,12 @@ export default function Quiz() {
         </div>
       ))}
 
-      <button onClick={handleSubmit} style={{ marginTop: "20px" }}>
+      <button onClick={handleSubmit} className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer">
         Submit Quiz
       </button>
 
-      <div style={{ marginTop: "15px" }}>
-        <a href="/">Back to Main</a>
+      <div className = "flex justify-left ml-4 mt-4 mb-4">
+        <a href="/" className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl">Back to Main</a>
       </div>
     </div>
   );
