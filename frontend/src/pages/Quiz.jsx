@@ -1,7 +1,7 @@
 // Quiz page
 // Put quiz result into a cookie
 
-// Quiz will be a 'buzzfeed' style quiz, AI will not be involved for this portion
+// Quiz will be a 'buzzfeed' style quiz, AI will not create custom quizzes for each user -> too much variation
 
 /*
   10 questions with 4 options each. Each option corresponds to a different learning type
@@ -21,8 +21,10 @@ export default function Quiz() {
 
   return (
     <div className = "p-5">
+
       <h1 className = "text-center font-bold text-4xl mb-5">Learning Style Quiz</h1>
 
+      {/* Quiz questions */}
       {quizQuestions.map((q, questionIndex) => (
         <div key={questionIndex} className = "mb-6 p-4">
           <h3 className = "text-left font-bold text-xl mb-5">{q.question}</h3>
@@ -42,12 +44,14 @@ export default function Quiz() {
         </div>
       ))}
 
+      {/* Submit button */}
       <div className = "flex justify-left ml-4 mt-4 mb-4">
         <button onClick={handleSubmit} className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer">
           Submit Quiz
         </button>
       </div>
 
+      {/* Back to main */}
       <div className = "flex justify-left ml-4 mt-4 mb-4">
         <a href="/" className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl">Back to Main</a>
       </div>
