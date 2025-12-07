@@ -1,6 +1,6 @@
 // Array of quiz questions and options
 
-// Used AI to generate question based on learning style. Will not use AI to create custom quizes for each user. Too much variation 
+// Used AI to help come up with questions and options since I have no clue how to determine one's learning style
 
 const quizQuestions = [
   {
