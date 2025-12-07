@@ -20,15 +20,15 @@ export default function Quiz() {
   const { answers, handleSelect, handleSubmit } = useQuizLogic(quizQuestions.length);
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className = "p-5">
       <h1 className = "text-center font-bold text-4xl mb-5">Learning Style Quiz</h1>
 
       {quizQuestions.map((q, questionIndex) => (
-        <div key={questionIndex} style={{ marginBottom: "20px" }}>
-          <h3>{q.question}</h3>
+        <div key={questionIndex} className = "mb-6 p-4">
+          <h3 className = "text-left font-bold text-xl mb-5">{q.question}</h3>
 
           {q.options.map((opt, optionIndex) => (
-            <label key={optionIndex} style={{ display: "block", marginBottom: "5px" }}>
+            <label key={optionIndex} className = "block mt-2 pl-5">
               <input
                 type="radio"
                 name={`q${questionIndex}`}  // each question is grouped
