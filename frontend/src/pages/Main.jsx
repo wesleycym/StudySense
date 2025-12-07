@@ -21,7 +21,7 @@ export default function Main() {
     const learningStyle = Cookies.get("learningStyle");
 
     if (!learningStyle) {
-      alert("Please take the quiz first so we know your learning style.");
+      alert("Please take the quiz first so we know your learning style."); // Switch to toast notification if you have time
       return;
     }
 
@@ -42,7 +42,7 @@ export default function Main() {
       setResult(data.output);
     } catch (error) {
       console.error("Error generating study guide:", error);
-      alert("Something went wrong.");
+      alert("Something went wrong."); // toast this
     }
 
     setLoading(false);
@@ -50,25 +50,41 @@ export default function Main() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>StudySense</h1>
 
-      <button onClick={async () => {
-        const res = await fetch("http://localhost:3001/test");
-        const text = await res.text();
-        alert("Server responded: " + text);
-      }}>
-        Test Server Connection
-      </button>
+      <h1 className = "text-center font-bold text-4xl mb-5">StudySense</h1>
 
-      <p>
-        Enter your notes below and click “Generate Study Guide” to
-        receive tailored content based on your learning style.
-      </p>
-
-      <div style={{ marginTop: "20px", paddingBottom: "10px" }}>
-        <a href="/quiz">Take or Retake Quiz</a>
+      {/* Test Server Connection Button */}
+      <div className = 'flex justify-center mb-4'>
+        <button
+        className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer"
+        onClick={async () => {
+          const res = await fetch("http://localhost:3001/test");
+          const text = await res.text();
+          alert("Server responded: " + text);
+        }}>
+          Test Server Connection
+        </button>
       </div>
 
+      {/* Take or Retake Quiz Button */}
+      <div className = "flex justify-center mb-4">
+        <a 
+        href="/quiz"
+        className = "py-2 px-4 hover:bg-gray-500 text-white rounded-4xl"
+        >
+          Take or Retake Quiz
+        </a>
+      </div>
+
+      {/* Instructions */}
+      <div className = "flex justify-left pl-2 mb-4">
+        <p>
+          Enter your notes below and click “Generate Study Guide” to
+          receive tailored content based on your learning style.
+        </p>
+      </div>
+
+      {/* Notes Input Area */}
       <textarea
         placeholder="Paste your notes here..."
         value={notes}
@@ -78,15 +94,47 @@ export default function Main() {
           height: "200px",
           padding: "10px",
           marginBottom: "10px",
+          resize:"none",
+          borderRadius: "8px",
+          border: "1px solid #ccc",
+          fontSize: "16px",
         }}
       />
 
-      <br />
+      {/* Clear Notes Button & study guide button */}
+      <div className = "flex justify-center">
+        <button
+          className="py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer"
+          onClick={() => {
+            if (window.confirm("Are you sure you want to clear your notes?")) {
+            setNotes("");
+            setResult("");
+            }
+          }}
+        >
+          Clear Notes
+        </button>
+      </div>
 
-      <button onClick={generateStudyGuide} disabled={loading}>
-        {loading ? "Generating..." : "Generate Study Guide"}
-      </button>
+      {/* Generate Study Guide Button */}
+      <div className="flex justify-left">
+        <button
+          className="py-2 px-4 hover:bg-gray-500 text-white rounded-4xl cursor-pointer flex items-center gap-2 disabled:opacity-70"
+          onClick={generateStudyGuide}
+          disabled={loading}
+        >
+          {loading ? (
+            <>
+              <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+              Generating...
+            </>
+          ) : (
+            "Generate Study Guide"
+          )}
+        </button>
+      </div>
 
+      {/* Display Result */}
       {result && (
         <div
           style={{
