@@ -93,6 +93,33 @@ function sanitizeInput(raw) {
 ```
 Sanitizing input prevents malformed prompts, injection attempts, and formatting artifacts.
 
+### Prompt Engine (**prompt.js**)
+Different learners require different types of explanations.   
+StudySense uses four prompt templates aligned with the VARK learning model:
+
+**V — Visual Learners:**   
+Emphasizes diagrams, flowcharts, spatial structure.
+
+**A — Auditory Learners:**  
+Uses conversational tone, verbal explanations, narrated steps.
+
+**R — Reading/Writing Learners:**   
+Focuses on structured paragraphs, rewritten definitions, bullet lists.
+
+**K — Kinesthetic Learners:**   
+Encourages hands-on steps, experiments, and physical analogies.   
+
+Each template enforces:
+- No adding new information
+- No solving homework questions
+- Only rewriting notes between ``[BEGIN_NOTES]`` and ``[END_NOTES]``
+- Compact spacing
+- Controlled markdown formatting
+
+This ensures stable, predictable behavior across all prompts.
+
+
+
 
 
 ## Testing commands   
