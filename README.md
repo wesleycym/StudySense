@@ -68,7 +68,7 @@ The backend serves as a **secure API proxy**, keeping the OpenAI key hidden and 
 - Return generated study guide to frontend
 
 ### Input Sanitization
-Before sending notes to teh LLM, input is cleaned to avoid: 
+Before sending notes to the LLM, input is cleaned to avoid: 
 - HTML injection
 - Control characters
 - Accidental markdown headers
