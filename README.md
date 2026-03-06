@@ -67,7 +67,7 @@ The backend serves as a **secure API proxy**, keeping the OpenAI key hidden and 
 - Normalize markdown output
 - Return generated study guide to frontend
 
-### Input sanitization
+### Input Sanitization
 Before sending notes to teh LLM, input is cleaned to avoid: 
 - HTML injection
 - Control characters
@@ -118,14 +118,72 @@ Each template enforces:
 
 This ensures stable, predictable behavior across all prompts.
 
+## Frontend (React)
+The frontend provides:
 
+### Clean UI for Input
+A text area for notes, styled interactively, with:
+-Controlled component state
+-Clear and reset buttons
+-Loading indicators
+-Markdown rendering panel
 
+### Quiz System
+Identifies learning style and writes cookie:   
+```learningStyle=V | A | R | K```   
 
+### Study Guide Generation Flow
+1. User pastes notes.
+2. Learning style is read from the cookie.
+3. Frontend POSTs to backend:
+```
+await fetch("http://localhost:3001/study/generate", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ text: notes, learningStyle }),
+});
+```
+4. Backend returns markdown.
+5. UI renders with ``react-markdown`` & ``remark-gfm``.
 
-## Testing commands   
-### Terminal 1   
-1) cd backend
-2) node server.js   
-### Terminal 2
-1) cd frontend   
-2) npm run dev   
+## Testing Summary
+
+### Frontend Tests
+- Quiz correctness
+- Cookie behavior
+- Disabled button/loading states
+- Markdown rendering
+- Error states (empty notes, missing learning style)
+- Backend connection test via /test
+
+### Backend Tests
+- Input validation (missing fields, too long, too short)
+- Sanitization behavior
+- Prompt selection correctness
+- Error handling for OpenAI failures
+- Output formatting (newlines, spacing, markdown cleanup)
+
+## Installation & Running
+
+### Backend Setup
+
+```
+cd backend
+npm install
+echo "OPENAI_API_KEY=your_key_here" > .env
+npm start
+```
+
+Backend runs on:    
+``http://localhost:3001``
+
+### Frontend Setup
+
+```
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend runs on:   
+``http://localhost:5173``
